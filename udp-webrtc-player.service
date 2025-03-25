@@ -1,0 +1,31 @@
+[Unit]
+Description=UDP WebRTC Player Service
+After=network.target
+Documentation=https://github.com/yourusername/udp-webrtc-player
+
+[Service]
+Type=forking
+# Set user appropriately - using a non-root user is more secure
+User=root
+# Update this path to match your installation
+WorkingDirectory=/Claude/udp-webrtc-player
+# Start command
+ExecStart=/usr/local/bin/pm2 start ecosystem.config.js --env production
+# Reload command for updates
+ExecReload=/usr/local/bin/pm2 reload ecosystem.config.js --env production
+# Stop command
+ExecStop=/usr/local/bin/pm2 stop ecosystem.config.js
+# Restart policy
+Restart=on-failure
+RestartSec=10
+# Environment variables can be set here
+Environment=NODE_ENV=production
+
+# Security settings
+# NoNewPrivileges=true
+# ProtectSystem=full
+# ProtectHome=true
+# PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

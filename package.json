@@ -1,0 +1,39 @@
+{
+  "name": "udp-webrtc-player",
+  "version": "2.0.0",
+  "description": "A Node.js program that captures UDP packets and displays them via WebRTC with Apple-style UI",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
+    "start:pm2": "pm2 start ecosystem.config.js",
+    "start:prod": "pm2 start ecosystem.config.js --env production",
+    "stop:pm2": "pm2 stop ecosystem.config.js",
+    "restart:pm2": "pm2 restart ecosystem.config.js",
+    "logs": "pm2 logs udp-webrtc-player",
+    "monitor": "pm2 monit",
+    "lint": "eslint server/ public/js/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "udp",
+    "webrtc",
+    "video",
+    "streaming",
+    "apple-design"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "nodemon": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 12
+  },
+  "rules": {
+    "no-console": "off",
+    "no-unused-vars": "warn",
+    "semi": ["error", "always"],
+    "quotes": ["warn", "single"],
+    "indent": ["warn", 2],
+    "no-undef": "error",
+    "camelcase": "warn",
+    "max-len": ["warn", { "code": 120 }]
+  },
+  "globals": {
+    "io": "readonly",
+    "WebRTCHandler": "readonly",
+    "VideoPlayer": "readonly"
+  }
+}
