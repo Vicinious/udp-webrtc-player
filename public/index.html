@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UDP WebRTC Player</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>UDP WebRTC Player</h1>
+      <div id="connection-status">Connecting...</div>
+    </header>
+    
+    <div class="nav-links">
+      <a href="stream.html">Start a Stream</a>
+    </div>
+    
+    <main>
+      <div class="video-container">
+        <video id="video-player" playsinline></video>
+        
+        <div class="video-controls">
+          <button id="play-btn">Play</button>
+          <button id="pause-btn">Pause</button>
+          <button id="stop-btn">Stop</button>
+          
+          <div class="volume-control">
+            <label for="volume">Volume</label>
+            <input type="range" id="volume" min="0" max="1" step="0.05" value="0.7">
+          </div>
+          
+          <button id="fullscreen-btn">Full Screen</button>
+        </div>
+      </div>
+      
+      <div class="info-panel">
+        <h2>Stream Information</h2>
+        <div id="stream-info">
+          <p>Status: <span id="stream-status">Waiting for data...</span></p>
+          <p>Buffer Size: <span id="buffer-size">0</span> packets</p>
+          <p>Last Received: <span id="last-received">Never</span></p>
+          <p>Connection: <span id="connection-type">-</span></p>
+          <p>Data Rate: <span id="data-rate">0 KB/s</span></p>
+        </div>
+      </div>
+    </main>
+    
+    <div class="stream-selector">
+      <div id="available-streams"></div>
+    </div>
+  </div>
+  
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/webrtc.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stream - UDP WebRTC Player</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Start a Stream</h1>
+      <div id="connection-status">Connecting...</div>
+    </header>
+    
+    <div class="nav-links">
+      <a href="index.html">Back to Player</a>
+    </div>
+    
+    <main class="stream-container">
+      <div class="local-video-container">
+        <video id="local-video" autoplay muted playsinline></video>
+      </div>
+      
+      <div class="stream-controls">
+        <div class="device-selector">
+          <label for="video-source">Video Source</label>
+          <select id="video-source"></select>
+        </div>
+        
+        <div class="device-selector">
+          <label for="audio-source">Audio Source</label>
+          <select id="audio-source"></select>
+        </div>
+        
+        <div class="stream-options">
+          <label>
+            <input type="checkbox" id="enable-video" checked>
+            Enable Video
+          </label>
+          
+          <label>
+            <input type="checkbox" id="enable-audio" checked>
+            Enable Audio
+          </label>
+        </div>
+        
+        <button id="start-stream-btn" class="primary">Start Streaming</button>
+        <button id="stop-stream-btn" class="danger" disabled>Stop Streaming</button>
+        <button id="toggle-mute-btn" class="secondary" disabled>Mute Audio</button>
+        <button id="toggle-video-btn" class="secondary" disabled>Hide Video</button>
+      </div>
+      
+      <div class="stream-info">
+        <h2>Stream Information</h2>
+        <p>Status: <span class="status-indicator offline"></span><span id="stream-status">Not streaming</span></p>
+        <p>Duration: <span id="stream-duration">00:00:00</span></p>
+        <p>Viewers: <span id="viewer-count">0</span></p>
+        <p>Stream Quality: <span id="stream-quality">-</span></p>
+        
+        <div id="stream-url"></div>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/stream.js"></script>
+</body>
+</html>
